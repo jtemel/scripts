@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+/**
+ * Configure this template at: $HOME/.config/nf/h
+ */
+#ifndef __
+#define __
+
+#endif //__
+EOM
+
+echo "$VAR"

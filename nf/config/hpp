@@ -1,0 +1,20 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+/**
+ * Configure this template at: $HOME/.config/nf/hpp
+ */
+
+#ifndef __
+#define __
+
+class $1 {
+ public:
+  $1();
+ private:
+};
+
+#endif //__
+EOM
+
+echo "$VAR"

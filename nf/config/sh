@@ -1,0 +1,9 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+#!/bin/bash
+
+# Configure this comment at: $HOME/.config/nf/sh
+EOM
+
+echo "$VAR"

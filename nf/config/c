@@ -1,0 +1,13 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+/**
+ * Configure this template at: $HOME/.config/nf/c
+ */
+
+int main(int argc, char *argv[]) {
+  return 0;
+}
+EOM
+
+echo "$VAR"

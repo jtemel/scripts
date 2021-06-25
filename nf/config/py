@@ -1,0 +1,11 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+#!/usr/bin/env python
+
+'''
+Configure this template at: $HOME/.config/nf/py
+'''
+EOM
+
+echo "$VAR"

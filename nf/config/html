@@ -1,0 +1,12 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+<html>
+<head>
+</head>
+<body>
+</body>
+</html>
+EOM
+
+echo "$VAR"

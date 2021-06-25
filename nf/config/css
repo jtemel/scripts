@@ -1,0 +1,9 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+/**
+ * Configure this template at: $HOME/.config/nf/css
+ */
+EOM
+
+echo "$VAR"

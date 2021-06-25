@@ -1,0 +1,23 @@
+#!/bin/bash
+
+read -r -d '' VAR << EOM
+/**
+ * Configure this template at: $HOME/.config/nf/jsx
+ */
+
+import React from 'react';
+
+import styles from './$1.module.css';
+
+export default class $1 extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    return <h1>$1</h1>;
+  }
+}
+EOM
+
+echo "$VAR"
