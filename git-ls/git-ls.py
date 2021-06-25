@@ -43,19 +43,24 @@ def get_symbol(ls, rs):
 try:
     git_repo = git.Repo(os.getcwd(), search_parent_directories=True)
 except:
+    # If we're not in a repo, just perform the normal ls
     subprocess.run('ls -la --color', shell=True)
     os._exit(1)
 
+# Get some information from git
 git_root = git_repo.git.rev_parse('--show-toplevel')
 git_status = git_repo.git.status(['--porcelain', '--ignored']).split('\n')
 
+# Perform the normal ls -la
 result = subprocess.run(['ls', '-la'], stdout=subprocess.PIPE)
 files = result.stdout.decode('utf-8').split('\n')[1:-1]
 
 print(result.stdout.decode('utf-8').split('\n')[0])
 for file in files:
     color = tcolors.ENC
-    fname = file.split(' ')[-1]
+    fname = file.split()[-1]
+    if len(file.split()) > 9:
+        fname = ' '.join(file.split(' ')[-3:])
 
     if fname in ('.', '..'):
         print(file.replace(fname, '- ' + tcolors.DIR + fname + tcolors.ENC))
@@ -65,11 +70,14 @@ for file in files:
     if file[0] == 'd':
         nfname += '/'
         color = tcolors.DIR
+    if file[0] == 'l':
+        color = tcolors.LNK
 
     printed = False
     for gfiles in git_status:
         if printed:
             break
+
         gfile = gfiles[3:]
         if nfname == gfile:
             print(file.replace(fname, get_symbol(gfiles[0], gfiles[1]) + ' ' + color + fname + tcolors.ENC))
